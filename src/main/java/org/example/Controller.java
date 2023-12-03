@@ -15,9 +15,8 @@ public class Controller {
     }
 
     public static void createCard(){
-        Card.cardBoard();
+
         OutputView.cardInit();
-        User.validateInputNum();
 
     }
 

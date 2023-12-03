@@ -1,6 +1,8 @@
 package org.example.model;
 
 
+import org.example.view.InputView;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -11,15 +13,16 @@ import static org.example.view.InputView.*;
 
 public class User {
 
-    public static void validateInputNum(){
-        String[] userInput = userInput();
+
+    public static List<Integer> validateInputNum(String[] userInput){
+
 
         validateInputLength(userInput);
         validateInputRange(userInput);
         validateInputDuplicated(userInput);
 
-        List<Integer> convertedInput = changeStrToList(userInput);
-//        changeStrToList(userInput);
+        return changeStrToList(userInput());
+
     }
 
     private static  List<Integer> changeStrToList(String[] input) {
