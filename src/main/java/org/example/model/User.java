@@ -3,6 +3,7 @@ package org.example.model;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static org.example.view.InputView.*;
@@ -35,10 +36,7 @@ public class User {
     }
 
 
-    public static boolean distinctCount(String[] userInput){
-        long distinctCount = Arrays.stream(userInput).distinct().count();
-        return distinctCount == userInput().length;
-    }
+
 
 
     public static void validateInputRange(String[] userInput){
@@ -47,13 +45,21 @@ public class User {
             int x = Integer.parseInt(userInput[0].trim());
             int y = Integer.parseInt(userInput[1].trim());
 
-            if(x <=  1 || x >=  8 || y <= 1 || y>= 8){
-                throw new IllegalArgumentException("변경예정");   //  시도 남은카드 출력
+            if(x < 1 || x > 8 || y < 1 || y > 8){
+                throw new IllegalArgumentException("좌표는 1과 8 사이의 숫자여야 합니다.");  //  시도 남은카드 출력
             }
         }catch (NumberFormatException e){
             throw new IllegalArgumentException(INPUT_RANGE_EXCEPTION);
         }
 
+    }
+
+    public static boolean distinctCount(String[] userInput){
+
+
+        Set<String> uniqueCoordinates = Arrays.stream(userInput)
+                .collect(Collectors.toSet());
+        return uniqueCoordinates.size() == userInput.length;
     }
 
 
