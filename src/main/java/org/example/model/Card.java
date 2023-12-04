@@ -8,6 +8,10 @@ public class Card {
     public static int[][] board;
     public static boolean[][] flipped;
 
+    public static void card(){
+        cardCreate();
+        initializeBoard();;
+    }
     public static List<Integer> cardCreate(){//1 ~24 개의 카드 구현
         List<Integer> numbers = new ArrayList<>();
 

@@ -14,16 +14,22 @@ import static org.example.view.InputView.*;
 public class User {
 
 
-    public static List<Integer> validateInputNum(String[] userInput){
+    public static boolean validateInputNum(String[] userInput){
 
+        try {
+            validateInputLength(userInput);
+            validateInputRange(userInput);
+            validateInputDuplicated(userInput);
 
-        validateInputLength(userInput);
-        validateInputRange(userInput);
-        validateInputDuplicated(userInput);
-
-        return changeStrToList(userInput());
+            // 모든 유효성 검사가 성공했으므로 true 반환
+            return true;
+        } catch (IllegalArgumentException e) {
+            // 유효성 검사 중 하나라도 실패하면 false 반환
+            return false;
+        }
 
     }
+
 
     private static  List<Integer> changeStrToList(String[] input) {
         return Arrays.stream(input) // 문자열 배열을 스트림으로 변환

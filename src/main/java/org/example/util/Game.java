@@ -40,28 +40,31 @@ public class Game {
 
         while (remainingsPairs >0){
             String[] inputs = InputView.userInput();
-            List<Integer> parsedInputs = User.validateInputNum(inputs);
 
 
+// 입력된 좌표를 정수로 변환
+            int row1 = Integer.parseInt(inputs[0]) - 1;
+            int col1 = Integer.parseInt(inputs[1]) - 1;
+            int row2 = Integer.parseInt(inputs[2]) - 1;
+            int col2 = Integer.parseInt(inputs[3]) - 1;
 
-            int row1 = parsedInputs.get(0) - 1;
-            int col1 = parsedInputs.get(1) - 1;
-            int row2 = parsedInputs.get(2) - 1;
-            int col2 = parsedInputs.get(3) - 1;
+// 입력된 좌표가 유효한지 검사
+            boolean isValidInput = User.validateInputNum(new String[] {
+                    inputs[0], inputs[1], inputs[2], inputs[3]
+            });
 
             String card1 = FlipCard.flipCard(row1, col1);
             String card2 = FlipCard.flipCard(row2, col2);
-
-            if(card1.equals(card2)){
+            if (isValidInput) {
                 RemoveCard.removeMatchedCards(row1,col1,row2,col2);
                 remainingsPairs--;
 
                 OutputView.printBoard();
-            }else{
+            } else {
                 Card.initializeBoard();
             }
-            attempts++;
 
+            attempts++;
         }
     }
     public static void completeGame()
