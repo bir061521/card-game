@@ -50,7 +50,7 @@ class UserTest {
 
     @Test
     void validateInputNum() {
-        String[] inputs = {"1", "2", "3", "4"}; // 가정: 유효한 입력
-        assertTrue(User.validateInputNum(inputs));
+       String[] inputs = {"1", "2", "3", "4"}; // 가정: 유효한 입력
+        assertDoesNotThrow(User.validateInputNum(inputs));
     }
 }

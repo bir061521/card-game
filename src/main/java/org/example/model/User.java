@@ -31,16 +31,9 @@ public class User {
     }
 
 
-    private static  List<Integer> changeStrToList(String[] input) {
-        return Arrays.stream(input) // 문자열 배열을 스트림으로 변환
-                .map(String::trim) // 앞뒤 공백 제거
-                .map(Integer::parseInt) // 문자열을 정수로 변환
-                .collect(Collectors.toList()); // 결과를 List<Integer>로 수집
-    }
-
     public static void validateInputLength(String[] userInput){
         if (userInput.length != 2 ){
-            throw new IllegalArgumentException(INPUT_LENGTH_EXCEPTION);
+            throw new IllegalArgumentException("입력된 길이가 올바르지 않습니다");
         }
     }
 
@@ -58,7 +51,7 @@ public class User {
                 throw new IllegalArgumentException("좌표는 1과 8 사이의 숫자여야 합니다.");  //  시도 남은카드 출력
             }
         }catch (NumberFormatException e){
-            throw new IllegalArgumentException(INPUT_RANGE_EXCEPTION);
+            throw new IllegalArgumentException("입력된 숫자의 범위를 벗어났습니다.");
         }
 
     }
@@ -75,7 +68,7 @@ public class User {
 
     public static void validateInputDuplicated(String[] userInput){
         if(!distinctCount(userInput)){
-            throw new IllegalArgumentException(INPUT_DUPLICATE_EXCEPTION);
+            throw new IllegalArgumentException("중복된 입력입니다");
         }
     }
 
